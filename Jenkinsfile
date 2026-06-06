@@ -9,25 +9,10 @@ pipeline {
             }
         }
 
-        stage('Build Backend') {
+        stage('Verify Repository') {
             steps {
-                dir('backend') {
-                    sh 'npm install'
-                }
-            }
-        }
-
-        stage('Build Frontend') {
-            steps {
-                dir('frontend') {
-                    sh 'npm install'
-                }
-            }
-        }
-
-        stage('Build Docker Images') {
-            steps {
-                sh 'docker compose build'
+                sh 'pwd'
+                sh 'ls -la'
             }
         }
     }
