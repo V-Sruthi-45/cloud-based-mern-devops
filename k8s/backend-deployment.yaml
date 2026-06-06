@@ -20,7 +20,25 @@ spec:
     spec:
       containers:
       - name: backend
-        image: yourdockerhub/backend:latest
+        image: taskflow-backend:latest
+        imagePullPolicy: Never
 
         ports:
         - containerPort: 5000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "5000"
+
+        - name: MONGODB_URI
+          value: "YOUR_MONGODB_URI"
+
+        - name: JWT_SECRET
+          value: "your_super_secret_jwt_key_minimum_32_characters_long"
+
+        - name: JWT_EXPIRES_IN
+          value: "7d"
+
+        - name: CORS_ORIGIN
+          value: "http://frontend-service"
